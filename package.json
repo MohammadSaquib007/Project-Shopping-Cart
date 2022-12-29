@@ -8,7 +8,7 @@
     "start": "npx nodemon src/index.js "
   },
   "keywords": [],
-  "author": "vikas gautam, ayush pandey, mohammad saquib, yashwant rajput",
+  "author": " Mohammad Saquib, Ayush Pandey, Vikas Gautam , Yashwant Rajput",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1277.0",

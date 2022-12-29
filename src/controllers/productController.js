@@ -1,6 +1,6 @@
-const ProductModel = require('../models/productModel')
+const productModel = require('../models/productModel')
 const aws = require("../aws/awsConfig")
-const { isEmpty , isValidSize ,isValidName,isValidPrice, isValidTitle, isValidFile, isValidInstallments } = require('../utils/validator');
+const { isEmpty , isValidSize ,isValidName,isValidPrice, isValidTitle, isValidFile, isValidInstallments,isValidRequestBody } = require('../utils/validator');
 let { isValidObjectId } = require('mongoose')
 
 
@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
     try {
         let data = req.body;
         let { title, description, price, currencyId, currencyFormat, isFreeShipping, productImage, style, availableSizes, installments } = data
-        if (Object.keys(data).length == 0) {
+        if (!isValidRequestBody(data)) {
             return res.status(400).send({ status: false, message: " body can not be empty" })
         }
 
@@ -19,7 +19,7 @@ const createProduct = async (req, res) => {
         if (!isValidTitle(title)) {
             return res.status(400).send({ status: false, message: "invalid title" })
         }
-        let uniqueTitle = await ProductModel.findOne({ title: title })
+        let uniqueTitle = await productModel.findOne({ title: title })
         if (uniqueTitle) {
             return res.status(400).send({ status: false, message: "this title already exists" })
         }
@@ -295,7 +295,7 @@ const deleteProduct = async function(req,res){
 
      if(!isValidObjectId(productId)) return res.status(400).send({status:false , message:"Passed productid is invalid."});
 
-     let checkInDB = await ProductModel.findById(productId);
+     let checkInDB = await productModel.findById(productId);
 
      if(!checkInDB) return res.status(404).send({status:false,message:"No data found."});
 

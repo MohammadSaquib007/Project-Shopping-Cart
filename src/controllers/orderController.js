@@ -12,7 +12,7 @@ const createOrder = async function(req,res){
     let userId = req.params.userId;
     let data = req.body;
     let cartId = data.cartId
-    if(Object.keys(data).length== 0){
+    if(!isValidRequestBody(data)){
       return res.status(400).send({status: false, message: "body can not be empty"})
     }
     

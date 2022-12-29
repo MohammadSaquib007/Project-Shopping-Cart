@@ -106,8 +106,10 @@ const updateCart = async function (req, res) {
         let checkUser = await userModel.find({ _id: userId, isDeleted: false })
         if (!checkUser) return res.status(404).send({ status: false, message: "User not found." });
 
-
-        const { cartId, productId, removeProduct } = req.body;
+        let data= req.body
+        const { cartId, productId, removeProduct } = data;
+        if(!isValidRequestBody(data)) return res.status(400).send({ status: false, message: "body missing" });
+        
 
         if (!cartId) return res.status(400).send({ status: false, message: "CartID is missing" });
         if (!productId) return res.status(400).send({ status: false, message: "ProductID is missing" });
