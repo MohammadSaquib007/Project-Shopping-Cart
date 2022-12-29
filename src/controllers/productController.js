@@ -1,7 +1,6 @@
 const ProductModel = require('../models/productModel')
 const aws = require("../aws/awsConfig")
 const { isEmpty , isValidSize ,isValidName,isValidPrice, isValidTitle, isValidFile, isValidInstallments } = require('../utils/validator');
-const productModel = require('../models/productModel');
 let { isValidObjectId } = require('mongoose')
 
 

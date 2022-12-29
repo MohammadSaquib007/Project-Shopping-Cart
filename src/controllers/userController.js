@@ -254,7 +254,7 @@ const updateUser = async function (req, res) {
       // data.password = await  bcrypt.hashSync(data.password,10) 
       // let hashedPassword = data.password
 
-      let hashedPassword = await bcrypt.hashSync(password, 10)
+      let hashedPassword =  bcrypt.hashSync(password, 10)
 
       updateData.password = hashedPassword;
     }

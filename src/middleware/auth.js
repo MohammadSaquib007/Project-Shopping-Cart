@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const {isValidId}= require('../utils/validator')
 const userModel = require('../models/userModel');
+//*__Authentication____________________________________________
 
 const authentication = async function(req,res,next){
     try{
@@ -24,11 +25,11 @@ const authentication = async function(req,res,next){
     }
 }
 
-
+//________Authorization____________________________________________________
 const authorisation = async function(req,res,next){
     try{
         let token=req.verification.userId
-        // let tokenUser=token.userId
+        
        let userId = req.params.userId;
 
        if(!isValidId(userId)) return res.status(400).send({status:false,message:"ID is invalid."});

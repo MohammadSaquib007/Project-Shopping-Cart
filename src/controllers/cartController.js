@@ -99,7 +99,7 @@ const createCart = async function (req, res) {
 const updateCart = async function (req, res) {
     try {
 
-        userId = req.params.userId;
+        const userId = req.params.userId;
 
         if (!isValidId(userId)) return res.status(400).send({ status: false, message: "User id is invalid." });
 
