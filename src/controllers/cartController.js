@@ -5,7 +5,7 @@ const productModel = require('../models/productModel')
 let { isValidId, isValidNumbers,isValidRequestBody} = require('../utils/validator')
 
 
-/**CREATE CART________________________________________________________________________________ */
+/**CREATE CART___________________________________________________________________________ */
 const createCart = async function (req, res) {
     try {
         let userId = req.params.userId
